@@ -7,21 +7,13 @@ import java.util.stream.IntStream;
 public class Oppg3 {
 
   public static void main(String[] args) {
-    System.out.println("\na)");
     taskA(ansatte());
-    System.out.println("\nb");
     taskB(ansatte());
-    System.out.println("\nc)");
     taskC(ansatte());
-    System.out.println("\nd)");
     taskD(ansatte());
-    System.out.println("\ne)");
     taskE(ansatte());
-    System.out.println("\nf)");
     taskF(ansatte());
-    System.out.println("\ng)");
     taskG(ansatte());
-    System.out.println("\nh)");
     taskH(ansatte());
   }
 
@@ -35,54 +27,54 @@ public class Oppg3 {
     return ansatte;
   }
 
+  /** Lag en ny liste som kun inneholder etternavnene til de ansatte */
   private static void taskA(List<Ansatt> ansatte) {
-    // Lag en ny liste som kun inneholder etternavnene til de ansatte
     List<String> etternavn = ansatte.stream()
         .map(Ansatt::getEtternavn)
         .toList();
-    System.out.println("Liste med etternavn til de ansatte: " + etternavn);
+    System.out.println("\na) \nListe med etternavn til de ansatte: " + etternavn);
   }
 
+  /** Finn ut antall kvinner blant de ansatte */
   private static void taskB(List<Ansatt> ansatte) {
-    // Finn ut antall kvinner blant de ansatte
     long antallKvinner = ansatte.stream()
         .filter(a -> a.getKjonn() == Kjonn.KVINNE)
         .count();
-    System.out.println("Antall kvinner blant de ansatte: " + antallKvinner);
+    System.out.println("\nb) \nAntall kvinner blant de ansatte: " + antallKvinner);
   }
 
+  /** Regn ut gjennomsnittslønnen til kvinnene */
   private static void taskC(List<Ansatt> ansatte) {
-    // Regn ut gjennomsnittslønnen til kvinnene
     double snittlønnKvinner = ansatte.stream()
         .filter(a -> a.getKjonn() == Kjonn.KVINNE)
         .mapToDouble(a -> a.getAarslonn()).average().getAsDouble();
-    System.out.println("Gjennomsnittslønnen til kvinnene: " + snittlønnKvinner);
+    System.out.println("\nc) \nGjennomsnittslønnen til kvinnene: " + snittlønnKvinner);
   }
 
+  /** Gi alle sjefer en lønnsøkning på 7% */
   private static void taskD(List<Ansatt> ansatte) {
-    // Gi alle sjefer en lønnsøkning på 7%
     ansatte.stream()
         .filter(a -> a.getStilling().toLowerCase().contains("sjef"))
         .forEach(a -> a.setAarslonn((int) (a.getAarslonn() * 1.07)));
-    System.out.println("Lønnsøkning på 7% for alle sjefer: ");
+    System.out.println("\nd) \nLønnsøkning på 7% for alle sjefer: ");
     ansatte.forEach(System.out::println);
   }
 
+  /** Finn ut (true|false) om det er noen ansatte som tjener mer enn 800.000,- */
   private static void taskE(List<Ansatt> ansatte) {
-    // Finn ut (true|false) om det er noen ansatte som tjener mer enn 800.000,-
     boolean høyLønn = ansatte.stream()
         .anyMatch(a -> a.getAarslonn() > 800000);
-    System.out.println("Er det noen ansatte som tjener mer enn 800.000kr?: " + høyLønn);
+    System.out.println("\ne) \nEr det noen ansatte som tjener mer enn 800.000kr?: " + høyLønn);
   }
 
+  /** Skriv ut alle de ansatte med System.out.println() uten å bruke løkke */
   private static void taskF(List<Ansatt> ansatte) {
-    // Skriv ut alle de ansatte med System.out.println() uten å bruke løkke
-    System.out.println("Alle ansatte: ");
+    System.out.println("\nf) \nAlle ansatte: ");
     ansatte.forEach(System.out::println);
   }
 
+  /** Finn den/de ansatte som har lavest lønn */
   private static void taskG(List<Ansatt> ansatte) {
-    // Finn den/de ansatte som har lavest lønn
     int lavestLønn = ansatte.stream()
         .map(Ansatt::getAarslonn)
         .min(Integer::compareTo).get();
@@ -90,16 +82,16 @@ public class Oppg3 {
     List<Ansatt> lavestLønnAnsatte = ansatte.stream()
         .filter(a -> a.getAarslonn() == lavestLønn)
         .toList();
-    System.out.println("Ansatte med lavest lønn: ");
+    System.out.println("\ng) \nAnsatte med lavest lønn: ");
     lavestLønnAnsatte.forEach(System.out::println);
   }
 
+  /** Finn ut summen av alle heltall i [1, 1000> som er delelig med 3 eller 5 */
   private static void taskH(List<Ansatt> ansatte) {
-    // Finn ut summen av alle heltall i [1, 1000> som er delelig med 3 eller 5
     int sum = IntStream.range(1, 1000)
         .filter(i -> (i % 3 == 0 || i % 5 == 0))
         .sum();
-    System.out.println("Summen av alle heltall i [1, 1000> som er delelig med 3 eller 5: " + sum);
+    System.out.println("\nh) \nSummen av alle heltall i [1, 1000> som er delelig med 3 eller 5: " + sum);
   }
 
 }
