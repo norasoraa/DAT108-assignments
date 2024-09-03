@@ -6,15 +6,15 @@ public class Oppg1b {
 
   public static void main(String[] args) {
 
-    // Oppg i. Summen av 12 og 13
+    System.out.print("i. Summen av 12 og 13: ");
     BiFunction<Integer, Integer, Integer> sum = (a, b) -> a + b;
     System.out.println(beregn(12, 13, sum));
 
-    // Oppg ii. Den største av -5 og 3
+    System.out.print("\nii. Den største av -5 og 3: ");
     BiFunction<Integer, Integer, Integer> greatest = (a, b) -> Integer.max(a, b);
     System.out.println(beregn(-5, 3, greatest));
 
-    // Oppg iii. Avstanden (absoluttverdien av differansen) mellom 54 og 45
+    System.out.print("\niii. Avstanden (absoluttverdien av differansen) mellom 54 og 45: ");
     BiFunction<Integer, Integer, Integer> difference = (a, b) -> Math.abs(a - b);
     System.out.println(beregn(54, 45, difference));
   }

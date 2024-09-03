@@ -46,7 +46,6 @@ public class Oppg2 {
   private static void taskII(List<Ansatt> ansatte) {
     System.out.println("\nii. \nEt fast prosenttillegg:");
     lonnsoppgjor(ansatte, a -> (int) (a.getAarslonn() * 1.08));
-
   }
 
   /** iii. Et fast kronetillegg hvis du har lav lønn */
