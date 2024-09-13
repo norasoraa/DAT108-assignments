@@ -42,22 +42,20 @@ public class HamburgerBrett {
    * 
    * @param kokk the name of the cook adding the hamburger to the tray
    */
-  public void leggePaHamburger(String kokk) {
-    synchronized (this) {
-      while (fulltBrett()) {
-        System.out.println(kokk + " (kokk) klar med hamburger, men brett fullt. Venter!");
-        try {
-          wait();
-        } catch (InterruptedException e) {
-        }
+  public synchronized void leggePaHamburger(String kokk) {
+    while (fulltBrett()) {
+      System.out.println(kokk + " (kokk) klar med hamburger, men brett fullt. Venter!");
+      try {
+        wait();
+      } catch (InterruptedException e) {
       }
-      Hamburger hamburger = new Hamburger(hamburgerNummer);
-      hamburgerBrett.add(hamburger);
-      System.out.println(kokk + " (kokk) legger på hamburger " + hamburger + ". "
-          + this);
-      hamburgerNummer++;
-      notifyAll();
     }
+    Hamburger hamburger = new Hamburger(hamburgerNummer);
+    hamburgerBrett.add(hamburger);
+    System.out.println(kokk + " (kokk) legger på hamburger " + hamburger + ". "
+        + this);
+    hamburgerNummer++;
+    notifyAll();
   }
 
   /**
@@ -66,19 +64,17 @@ public class HamburgerBrett {
    * 
    * @param servitor the name of the waiter taking the hamburger from the tray
    */
-  public void taAvHamburger(String servitor) {
-    synchronized (this) {
-      while (hamburgerBrett.isEmpty()) {
-        System.out.println(servitor + " (servitør) ønsker å ta hamburger, men brett tomt. Venter!");
-        try {
-          wait();
-        } catch (InterruptedException e) {
-        }
+  public synchronized void taAvHamburger(String servitor) {
+    while (hamburgerBrett.isEmpty()) {
+      System.out.println(servitor + " (servitør) ønsker å ta hamburger, men brett tomt. Venter!");
+      try {
+        wait();
+      } catch (InterruptedException e) {
       }
-      Hamburger hamburger = hamburgerBrett.removeFirst();
-      System.out.println(servitor + " (servitør) tar av hamburger " + hamburger + ". " + this);
-      notifyAll();
     }
+    Hamburger hamburger = hamburgerBrett.removeFirst();
+    System.out.println(servitor + " (servitør) tar av hamburger " + hamburger + ". " + this);
+    notifyAll();
   }
 
   @Override
