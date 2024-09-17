@@ -11,7 +11,7 @@ import java.util.List;
 public class HamburgerBrett {
 
   private int kapasitet;
-  private List<Hamburger> hamburgerBrett;
+  private final List<Hamburger> hamburgerBrett;
   private int hamburgerNummer;
 
   /**

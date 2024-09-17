@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Servitor extends Thread {
 
-  private HamburgerBrett hamburgerBrett;
+  private final HamburgerBrett hamburgerBrett;
   private String navn;
   private Random random;
 
