@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  */
 public class Sender extends Thread {
 
-  private Message message;
+  private final Message message;
 
   /**
    * Constructs a new {@link Sender} with the given {@link Message}.

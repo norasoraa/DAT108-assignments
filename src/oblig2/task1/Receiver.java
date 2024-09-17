@@ -8,7 +8,7 @@ package oblig2.task1;
  */
 public class Receiver extends Thread {
 
-  private Message message;
+  private final Message message;
 
   /**
    * Constructs a new {@link Receiver} with the given {@link Message}.
