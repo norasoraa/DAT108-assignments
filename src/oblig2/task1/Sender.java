@@ -27,6 +27,9 @@ public class Sender extends Thread {
     while (true) {
       String newText = JOptionPane.showInputDialog("Skriv inn din melding, quit for å slutte");
 
+      if (newText.equalsIgnoreCase("quit")) {
+        System.exit(0);
+      }
       synchronized (message) {
         message.setText(newText);
         message.notifyAll();
