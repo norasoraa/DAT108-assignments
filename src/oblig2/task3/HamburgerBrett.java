@@ -1,7 +1,7 @@
 package oblig2.task3;
 
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * A class that represents a shared hamburger tray where cooks can add
@@ -9,7 +9,7 @@ import java.util.concurrent.BlockingQueue;
  */
 public class HamburgerBrett {
 
-  private BlockingQueue<Hamburger> hamburgerBrett;
+  private final BlockingQueue<Hamburger> hamburgerBrett;
   private int hamburgerNummer;
 
   /**
@@ -20,7 +20,7 @@ public class HamburgerBrett {
    * @param kapasitet the maximum number of hamburgers the tray can hold
    */
   public HamburgerBrett(int kapasitet) {
-    this.hamburgerBrett = new ArrayBlockingQueue<Hamburger>(kapasitet);
+    this.hamburgerBrett = new LinkedBlockingQueue<Hamburger>(kapasitet);
     this.hamburgerNummer = 1;
   }
 
