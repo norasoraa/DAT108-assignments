@@ -1,7 +1,7 @@
 package oblig2.task2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Queue;
+import java.util.LinkedList;
 
 /**
  * A class that represents a shared hamburger tray where cooks can add
@@ -11,7 +11,7 @@ import java.util.List;
 public class HamburgerBrett {
 
   private int kapasitet;
-  private final List<Hamburger> hamburgerBrett;
+  private final Queue<Hamburger> hamburgerBrett;
   private int hamburgerNummer;
 
   /**
@@ -23,7 +23,7 @@ public class HamburgerBrett {
    */
   public HamburgerBrett(int kapasitet) {
     this.kapasitet = kapasitet;
-    this.hamburgerBrett = new ArrayList<>(kapasitet);
+    this.hamburgerBrett = new LinkedList<>();
     this.hamburgerNummer = 1;
   }
 
@@ -72,7 +72,7 @@ public class HamburgerBrett {
       } catch (InterruptedException e) {
       }
     }
-    Hamburger hamburger = hamburgerBrett.removeFirst();
+    Hamburger hamburger = hamburgerBrett.poll();
     System.out.println(servitor + " (servitør) tar av hamburger " + hamburger + ". " + this);
     notifyAll();
   }
