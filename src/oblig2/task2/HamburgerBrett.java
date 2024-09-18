@@ -16,7 +16,7 @@ public class HamburgerBrett {
 
   /**
    * Constructs a new {@link HamburgerBrett} with the specified capacity.
-   * The {@link HamburgerBrett} is represented as a {@link List} of
+   * The {@link HamburgerBrett} is represented as a {@link Queue} of
    * {@link Hamburger}s.
    * 
    * @param kapasitet the maximum number of hamburgers the tray can hold
@@ -33,7 +33,7 @@ public class HamburgerBrett {
    * @return {@code true} if the tray is full, {@code false} otherwise
    */
   public boolean fulltBrett() {
-    return hamburgerBrett.size() == kapasitet;
+    return hamburgerBrett.size() >= kapasitet;
   }
 
   /**
